@@ -1,0 +1,1 @@
+This directory will hold the necessary assets for the website
