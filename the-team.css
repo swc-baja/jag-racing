@@ -273,7 +273,7 @@ a.nav__link:hover::after {
 
 .team-leader img {
   width: 100%;         /* Maintain responsiveness */
-  height: 100px;       /* Set a fixed height to crop */
+  height: 250px;       /* Set a fixed height to crop */
   object-fit: cover;   /* Ensures the image fills the container and crops excess */
   object-position: center; /* Aligns the cropping to the center of the image */
   border-radius: 0%;   /* Optional: keep square corners or adjust for circular shapes */
