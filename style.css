@@ -1,152 +1,418 @@
+/* CSS FOR HOME PAGE */
+
+@import url('https://fonts.googleapis.com/css2?family=Afacad&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-/* Reset and basic styles */
+
+
+:root{
+    /* colors */
+    --primary-color: #ab0534;
+    --primary-color-dark:  #5e011c;
+    --secondary-color: #F3B61F;
+    --secondary-color-dark: #c79304;
+    --text-dark:  #1B2021;
+    --text-light: #676767;
+    --white: #ffffff;
+    --light-grey: #f0f0f0;
+
+    /* font sizes */
+    --main-titles: 85px;
+    --sub-title: 40px;
+    --body-text: 16px;
+    --links: 20px;
+}
+
+/* START OF NAV BAR */
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
 }
 
 body {
-    font-family: "Roboto Condensed", sans-serif;
-    line-height: 1.6;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 50px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-    z-index: 1000;
-}
-
-.logo img {
-    height: 40px; /* Set a standard height */
-    transform: scale(2); /* Scale up the logo size without increasing the header height */
-    transform-origin: left; /* Ensures the logo scales from the left side */
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: var(--links);
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+a {
+  text-decoration: none;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    transition: color 0.3s ease;
-    font-size: 1rem;
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
 }
 
-nav ul li a:hover {
-    color: #800603;
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 8px hsla(220, 68%, 12%, 0.1);
+  background-color: white;
+  z-index: 10;
+  height: 4rem;
 }
 
-.hero {
-    position: relative;
-    height: 100vh;
+/* Nav */
+.nav {
+  height: 75px;
+}
+.nav__data {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
 }
 
-.hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* JAG Racing Logo*/
+.logo img {
+    width: 150px; 
+    height: auto; 
+    max-width: 250px; 
+  }
+
+/* Hamurger Menu Icon */
+.nav__toggle {
+  position: relative;
+  width: 32px;
+  height: 32px;
 }
 
-.hero-overlay {
-    position: absolute;
-    top: 30%;
-    left: 75%; /* Increase this value to move the text further to the right */
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: rgb(255, 255, 255);
+/* Side Menu for smaller screens */
+.nav__toggle-menu, .nav__toggle-close {
+  font-size: 2rem;
+  color: var(--primary-color);
+  position: absolute;
+  display: grid;
+  place-items: center;
+  inset: 0;
+  cursor: pointer;
+  transition: opacity 0.1s, transform 0.4s;
 }
 
-.hero-overlay h1 {
-    font-size: 4.5rem;
-    margin-bottom: 0px;
-    white-space: nowrap; /* Prevents wrapping */
-    text-align: center; /* Optional: Adjust alignment */
+.nav__toggle-close {
+  opacity: 0;
 }
 
-.hero-overlay p {
-    font-size: 2rem;
-    white-space: nowrap; /* Prevents wrapping */
-    text-align: center; /* Optional: Adjust alignment */
-    font-weight:bold;
-}
-
-#about {
-    padding: 2rem; /* Add padding for spacing */
-    padding-left: 5rem;
-    font-size: 1.5rem;
-    margin-top: 3rem;
-    margin-bottom: 1.7rem;
-}
-
-#about h2 {
-    color: black;
-    font-size: 2.5rem;
-    text-align: left;
-    margin-top: 1rem;
-    /* margin-left: 1rem; */
-    position: relative; /* Required for positioning the ::after pseudo-element */
-    margin-bottom: 2rem;
-}
-
-#about h2::after {
-    content: "";
-    display: block;
-    width: 10%; /* Adjust width to control how much of the word is underlined */
-    height: 3px; /* Thickness of the underline */
-    background-color: #800603; /* Customize underline color */
+@media screen and (max-width: 1118px) {
+  .nav__menu {
+    background-color: var(--white);
     position: absolute;
     left: 0;
-    bottom: 0; /* Position underline directly below the text */
+    top: 2.5rem;
+    width: 100%;
+    height: calc(100vh - 3.5rem);
+    overflow: auto;
+    padding-block: 1.5rem 4rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: top 0.4s, opacity 0.3s;
+    z-index: 10;
+    font-weight: 500;
+  }
+  .nav__menu::-webkit-scrollbar-thumb {
+    background-color: hsl(220, 12%, 70%);
+  }
+
+  a.nav__link {
+    text-decoration: none;
+  }
+
+  /* Allows the underline hover effect to be hidden */
+  body.menu-open a.nav__link::after {
+    background-color: transparent !important; /* Override underline effect when side menu is open */
+  }
+
+  a.nav__link::after {
+    display: none; 
+  }
+
 }
 
-.section-container {
+/* Nav Bar Links */
+.nav__link {
+  color: var(--text-dark);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+/* Side menu links hover effect*/
+.nav__link:hover {
+  background-color: var(--secondary-color);
+}
+
+a.nav__link {
+  position: relative;
+  text-decoration: none;
+  color: var(--text-dark);
+}
+
+a.nav__link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: transparent; 
+  transition: background-color 0.3s ease; 
+  margin-bottom: 15px;
+}
+
+a.nav__link:hover::after {
+  background-color: var(--primary-color); 
+  transition: 0.3s;
+  width: 100%;
+}
+
+/* Show menu */
+.show-menu {
+  opacity: 1;
+  top: 4rem;
+  pointer-events: initial;
+}
+
+/* Show icon */
+.show-icon .nav__toggle-menu {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+.show-icon .nav__toggle-close {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/* Rotate dropdown icon */
+.show-dropdown .dropdown__arrow {
+  transform: rotate(180deg);
+}
+
+/* For large devices */
+@media screen and (min-width: 1118px) {
+  /* Nav */
+  .nav {
     display: flex;
-    flex-direction: column; /* Ensure title stays at the top */
-    gap: 1rem; /* Add spacing between elements */
+    justify-content: space-between;
+  }
+  .nav__toggle {
+    display: none;
+  }
+  .nav__list {
+    display: flex;
+    column-gap: 3rem;
+    height: 100%;
+  }
+  .nav li {
+    display: flex;
+  }
+  .nav__link {
+    padding: 0;
+  }
+  .nav__link:hover {
+    background-color: initial;
+  }
+
+}
+@media screen and (min-width: 1152px) {
+  .container {
+    margin-inline: auto;
+  }
 }
 
-.content-wrapper {
-    display: flex; /* Create a side-by-side layout for the image and text */
-    align-items: flex-start; /* Align items at the top */
-    gap: 2rem; /* Spacing between image and text */
+/* Media query for smaller screens, replace the image source */
+@media screen and (max-width: 480px) {
+  .logo img {
+    content: url('assets/JAG-Racing-Logo.svg') 
+  }
+}
+
+/*Intro Section*/
+
+#intro {
+    /* Setting the image */
+    background-image: url('assets/baja_group_pic.jpg');
+    width: 100%;
+    height: 85vh;
+    background-size: cover;
+    background-position: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right; 
+}
+
+/* Intro Section */
+#intro h4 {
+  color: var(--white);
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 55px;
+  padding: 0rem 50px 0rem; 
+  font-weight: 600;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  margin-bottom: 3rem;
+}
+
+/* About Section */
+#about h2 {
+  color: black;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: var(--sub-title); /* Use the same subtitle size */
+  margin-top: 5rem;
+  text-align: left; /* Ensures the text aligns to the left */
+  font-weight: 600; /* Make sure the title is bold like "Explore More" */
+  margin-bottom: 3.5rem;
 }
 
 .about-image {
+  width: 300px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+  /* border-radius: 8px; Optional: Add rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+  margin-bottom: 4rem;
+  margin-left: 4rem;
+}
+
+.section-container {
+  display: flex;
+  align-items: flex-start; /* Align content to the top */
+  justify-content: flex-start; /* Prevent centering */
+  flex-direction: column;
+}
+
+.content-wrapper {
+  display: flex; /* Create a side-by-side layout for the image and text */
+  align-items: flex-start; /* Align items at the top */
+  gap: 2rem; /* Spacing between image and text */
+}
+
+/* More Information Section (Explore More) */
+#more-info h2 {
+  color: var(--primary-color);
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: var(--sub-title); /* Same subtitle size as About Us */
+  text-align: center;
+  margin-top: 5rem;
+  font-weight: 600; /* Bold text */
+}
+
+#more-info h2::after {
+  content: "";
+  display: block;
+  width: 100px; 
+  height: 2px; 
+  background-color: var(--primary-color);
+  margin: 10px auto; 
+}
+
+
+#intro p {
+    color: var(--white);
+    font-size: 20px;
+    text-align: right;
+    position: relative;
+    padding: 0rem 3rem 0rem 0rem;
+    font-style: italic;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+/* About Section */
+.section-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center both elements horizontally */
+    flex-direction: column;
+  }
+
+.sae-picture {
+    width: 300px;
+    height: auto;
+    margin-right: 20px; 
+    order: 1; 
+    padding: 1.5rem;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+#about p {
+    color: var(--text-dark);
+    font-size: 1.25rem; 
+    margin-top: 2px; 
+    font-family: "Roboto Condensed", sans-serif;
+    line-height: 1.8;
+    flex: 1;
+    padding: 2rem;
+}
+
+.text-content p a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s; 
+}
+
+.text-content p a:hover {
+    text-decoration: underline;
+    color: var(--primary-color-dark); 
+}
+
+@media screen and (max-width: 1021px) {
+  #about p {
+    font-size: 18px;
+  }
+}
+
+
+/* Media query for screens with width 900px or less */
+@media screen and (max-width: 900px) {
+  /* Change the layout of the content-wrapper to stack vertically */
+  .content-wrapper {
+    flex-direction: column;
+    align-items: center; /* Center content */
+    
+  }
+
+  /* Adjust the image size if needed */
+  .about-image {
     width: 300px; /* Adjust width as needed */
     height: auto; /* Maintain aspect ratio */
-    /* border-radius: 8px; Optional: Add rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; /* Add space below the image */
+    margin-left: 0rem;
+  }
+
+  /* Adjust the About text section */
+  #about p {
+    margin-top: 1rem; /* Add spacing between image and text */
+    padding: 3rem; /* Ensure text is padded properly */
+    font-size: 18px;
+    margin-bottom: 4rem;
+  }
 }
 
-.text-content {
-    flex-grow: 1; /* Allow text to occupy remaining space */
-}
 
-.text-content p {
-    font-size: 1.25rem;
-    line-height: 1.8;
-    color: #333; /* Adjust text color */
-    margin-left: 2rem;
-    margin-right: 4rem;
-    margin-top: 2rem;
-}
+/* More Information Section */
 
 /* Section: Info Columns */
 #info-columns {
@@ -161,23 +427,14 @@ nav ul li a:hover {
 
 #info-columns h2 {
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+  font-family: "Roboto Condensed", sans-serif;
   color: #000000;
   text-align: left;
   padding-left: 4rem;
   position: relative; /* Required for the underline effect */
   display: inline-block; /* Ensures underline sizing matches the text */
-}
-
-#info-columns h2::after {
-  content: "";
-  display: block;
-  width: 15%; /* Adjust this to control the underline width */
-  height: 3px; /* Thickness of the underline */
-  background-color: #800603; /* Customize the underline color */
-  position: absolute;
-  left: 4rem; /* Aligns with the padding-left of the text */
-  bottom: -5px; /* Adjusts the gap between the text and the underline */
 }
 
 .columns-wrapper {
@@ -241,6 +498,37 @@ nav ul li a:hover {
   text-align: center; /* Ensures the button aligns with the text */
 }
 
+/* Learn more buttons for each of the three columns */
+.learn-more {
+    display: inline-block; 
+    padding: 0.5rem 1rem; 
+    margin: 15px;
+    border: none;
+    border-radius: 0.25rem;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 13px;
+}
+
+.learn-more:hover {
+    background-color: var(--primary-color-dark); 
+}
+
+#learn-more-info h3{
+    text-align: center;
+}
+
+#learn-more-info p
+{
+    font-family: 'Inter', sans-serif;
+    font-size: var(--body-text);
+    padding: 0rem 1.5rem;
+    margin-top: 0.75rem;
+}
 
 /* Footer */
 footer {
