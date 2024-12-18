@@ -245,7 +245,7 @@ a.nav__link:hover::after {
 /* Media query for smaller screens, replace the image source */
 @media screen and (max-width: 480px) {
   .logo img {
-    content: url('assets/JAG-Racing-Logo.svg') 
+    content: url('assets/JAG-logo.png'); 
   }
 }
 
