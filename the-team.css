@@ -1,0 +1,496 @@
+/* CSS FOR HOME PAGE */
+
+@import url('https://fonts.googleapis.com/css2?family=Afacad&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+:root{
+    /* colors */
+    --primary-color: #ab0534;
+    --primary-color-dark:  #5e011c;
+    --secondary-color: #F3B61F;
+    --secondary-color-dark: #c79304;
+    --text-dark:  #1B2021;
+    --text-light: #676767;
+    --white: #ffffff;
+    --light-grey: #f0f0f0;
+
+    /* font sizes */
+    --main-titles: 85px;
+    --sub-title: 40px;
+    --body-text: 16px;
+    --links: 20px;
+}
+
+/* START OF NAV BAR */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: var(--links);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 8px hsla(220, 68%, 12%, 0.1);
+  background-color: white;
+  z-index: 10;
+  height: 4rem;
+}
+
+/* Nav */
+.nav {
+  height: 75px;
+}
+.nav__data {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+}
+
+/* JAG Racing Logo*/
+.logo img {
+    width: 150px; 
+    height: auto; 
+    max-width: 250px; 
+  }
+
+/* Hamurger Menu Icon */
+.nav__toggle {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+/* Side Menu for smaller screens */
+.nav__toggle-menu, .nav__toggle-close {
+  font-size: 2rem;
+  color: var(--primary-color);
+  position: absolute;
+  display: grid;
+  place-items: center;
+  inset: 0;
+  cursor: pointer;
+  transition: opacity 0.1s, transform 0.4s;
+}
+
+.nav__toggle-close {
+  opacity: 0;
+}
+
+@media screen and (max-width: 1118px) {
+  .nav__menu {
+    background-color: var(--white);
+    position: absolute;
+    left: 0;
+    top: 2.5rem;
+    width: 100%;
+    height: calc(100vh - 3.5rem);
+    overflow: auto;
+    padding-block: 1.5rem 4rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: top 0.4s, opacity 0.3s;
+    z-index: 10;
+    font-weight: 500;
+  }
+  .nav__menu::-webkit-scrollbar-thumb {
+    background-color: hsl(220, 12%, 70%);
+  }
+
+  a.nav__link {
+    text-decoration: none;
+  }
+
+  /* Allows the underline hover effect to be hidden */
+  body.menu-open a.nav__link::after {
+    background-color: transparent !important; /* Override underline effect when side menu is open */
+  }
+
+  a.nav__link::after {
+    display: none; 
+  }
+
+}
+
+/* Nav Bar Links */
+.nav__link {
+  color: var(--text-dark);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+/* Side menu links hover effect*/
+.nav__link:hover {
+  background-color: var(--secondary-color);
+}
+
+a.nav__link {
+  position: relative;
+  text-decoration: none;
+  color: var(--text-dark);
+}
+
+a.nav__link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: transparent; 
+  transition: background-color 0.3s ease; 
+  margin-bottom: 15px;
+}
+
+a.nav__link:hover::after {
+  background-color: var(--primary-color); 
+  transition: 0.3s;
+  width: 100%;
+}
+
+/* Show menu */
+.show-menu {
+  opacity: 1;
+  top: 4rem;
+  pointer-events: initial;
+}
+
+/* Show icon */
+.show-icon .nav__toggle-menu {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+.show-icon .nav__toggle-close {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/* Rotate dropdown icon */
+.show-dropdown .dropdown__arrow {
+  transform: rotate(180deg);
+}
+
+/* For large devices */
+@media screen and (min-width: 1118px) {
+  /* Nav */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav__toggle {
+    display: none;
+  }
+  .nav__list {
+    display: flex;
+    column-gap: 3rem;
+    height: 100%;
+  }
+  .nav li {
+    display: flex;
+  }
+  .nav__link {
+    padding: 0;
+  }
+  .nav__link:hover {
+    background-color: initial;
+  }
+
+}
+@media screen and (min-width: 1152px) {
+  .container {
+    margin-inline: auto;
+  }
+}
+
+/* Media query for smaller screens, replace the image source */
+@media screen and (max-width: 480px) {
+  .logo img {
+    content: url('assets/JAG-Racing-Logo.svg') 
+  }
+}
+
+/* Style for the Team Leaders Section */
+.team-leaders {
+  text-align: center;
+  margin: 8rem 0;
+}
+
+.team-leaders h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+.team-leaders-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.team-leader {
+  width: 250px;
+  text-align: center;
+}
+
+.team-leader img {
+  width: 100%;         /* Maintain responsiveness */
+  height: 100px;       /* Set a fixed height to crop */
+  object-fit: cover;   /* Ensures the image fills the container and crops excess */
+  object-position: center; /* Aligns the cropping to the center of the image */
+  border-radius: 0%;   /* Optional: keep square corners or adjust for circular shapes */
+}
+
+.team-leader h3 {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  margin-top: 1.5rem;
+}
+
+.team-leader p {
+  font-size: 1em;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .team-leaders-container {
+    flex-direction: column; /* Stack the columns vertically */
+    align-items: center;   /* Center the stacked columns */
+  }
+
+  .team-leader {
+    width: 80%; /* Adjust the width of each column for smaller screens */
+    margin-bottom: 20px; /* Add spacing between stacked items */
+  }
+
+  .team-leader img {
+    height: auto; /* Adjust image height to maintain aspect ratio */
+  }
+}
+
+
+/* Footer */
+footer {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 50px 100px;
+  background: #121313;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+footer p{
+font-family: 'Inter', sans-serif;
+font-size: 19px;
+line-height: 1.7rem;
+}
+
+footer .container{
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+flex-direction: row;
+width: 100%;
+}
+
+footer .container .sect-aboutUs {
+  margin-right: 30px;
+  width: 40%;
+}
+
+footer h2{
+position: relative;
+color: white;
+font-weight: 500;
+margin-bottom: 25px;
+margin-top: 40px;
+font-family: 'Inter', sans-serif;
+}
+
+footer h2:before{
+content: "";
+position: absolute;
+bottom: -5px;
+left: 0;
+width: 50px;
+height: 2px;
+background: #ab0534;
+}
+
+.ext-links{
+margin-top: 20px;
+display: flex;
+}
+
+.ext-links li{
+list-style: none;
+}
+
+.ext-links li a{
+display: inline-block;
+width: 50px;
+height: 50px;
+background: #222;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-right: 10px;
+border-radius: 4px;
+text-decoration: none;
+}
+
+.ext-links li a:hover{
+background-color: #ab0534;
+}
+
+ion-icon[name="logo-linkedin"] {
+color: white;
+font-size: 30px; 
+}
+
+footer .container .sect-aboutUs p{
+color: #999;
+}
+
+.quick-links h2{
+position: relative;
+width: 100%;
+}
+
+.quick-links ul li{
+list-style-type: none;
+}
+
+.quick-links ul li a{
+color: #999;
+text-decoration: none;
+margin-bottom: 10px;
+display: inline-block;
+}
+
+
+.quick-links ul li a:hover{
+color: white;
+}
+
+footer .container .sect-aboutUs,
+footer .container .contact{
+width: calc(35% - 60px);
+margin-right: 0 !important;
+
+}
+
+.contact .info{
+position: relative;
+}
+
+.contact .info li{
+display: flex;
+margin-bottom: 20px;
+}
+
+.sect-contactUs span{
+color: white;
+font-size: 20px;
+}
+
+.sect-contactUs li span{
+color: white;
+}
+
+.sect-contactUs li{
+color: #999;
+text-decoration: none;
+margin-bottom: 20px;
+}
+
+.sect-contactUs li a{
+color: #999;
+text-decoration: none;
+}
+
+.sect-contactUs li a:hover{
+color: #fff;
+}
+
+.copyright-text{
+width: 100%;
+  background: #ab0534;
+  padding: 8px 40px;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+}
+
+@media (max-width: 991px){
+footer{
+  padding: 40px;
+}
+
+footer .container{
+  flex-direction: column;
+}
+
+footer div.sect-contactUs ul.info{
+  margin-right: 0;
+  margin-bottom: 25px;
+}
+
+footer .container .sect-aboutUs{
+  width: 100%;
+}
+
+.copyright-text{
+  width: 100%;
+  background: #ab0534;
+  padding: 8px 40px;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+}
+
+.quick-links h2{
+  width: 100%;
+}
+
+}
