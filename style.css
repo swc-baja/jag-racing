@@ -611,6 +611,16 @@ ion-icon[name="logo-linkedin"] {
   font-size: 30px; 
 }
 
+ion-icon[name="logo-instagram"] {
+  color: white;
+  font-size: 30px; 
+}
+
+ion-icon[name="logo-facebook"] {
+  color: white;
+  font-size: 30px; 
+}
+
 footer .container .sect-aboutUs p{
   color: #999;
 }
